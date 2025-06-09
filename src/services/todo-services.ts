@@ -5,7 +5,6 @@ import { revalidatePath } from "next/cache";
 // Get all todos
 export async function getTodos() {
   const todos = await db.todo.findMany({});
-  revalidatePath("/");
   return todos;
   // Revalidate the path after fetching todos
 }
