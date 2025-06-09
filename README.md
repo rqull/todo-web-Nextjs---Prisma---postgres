@@ -30,7 +30,7 @@ Aplikasi Todo List sederhana yang dibangun dengan teknologi modern:
 1. Clone repository ini
 
 ```bash
-git clone <https://github.com/rqull/todo-web-Nextjs---Prisma---postgres.git>
+git clone https://github.com/rqull/todo-web-Nextjs---Prisma---postgres.git
 cd todo_prisma_postgres
 ```
 
