@@ -1,36 +1,100 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Todo List Application
 
-## Getting Started
+Aplikasi Todo List sederhana yang dibangun dengan teknologi modern:
 
-First, run the development server:
+- [Next.js 15](https://nextjs.org/) - Framework React dengan Server Side Rendering
+- [Prisma](https://www.prisma.io/) - ORM untuk database
+- [PostgreSQL](https://www.postgresql.org/) - Database SQL yang powerful
+- [Tailwind CSS](https://tailwindcss.com/) - Framework CSS untuk styling
+
+## Fitur
+
+- ✅ Membuat todo baru
+- ✅ Menampilkan daftar todo
+- ✅ Mengubah todo yang sudah ada
+- ✅ Menghapus todo
+- ✅ Server Actions untuk operasi CRUD
+- ✅ Validasi input
+- ✅ UI yang responsif
+
+## Teknologi yang Digunakan
+
+- **Framework**: Next.js 15
+- **Database**: PostgreSQL
+- **ORM**: Prisma
+- **Styling**: Tailwind CSS
+- **Language**: TypeScript
+
+## Cara Menjalankan Aplikasi
+
+1. Clone repository ini
+
+```bash
+git clone <https://github.com/rqull/todo-web-Nextjs---Prisma---postgres.git>
+cd todo_prisma_postgres
+```
+
+2. Install dependencies
+
+```bash
+npm install
+```
+
+3. Setup environment variable
+   Buat file `.env` dan isi dengan connection string PostgreSQL Anda:
+
+```env
+DATABASE_URL="postgresql://username:password@localhost:5432/todo_db"
+```
+
+4. Jalankan migrasi database
+
+```bash
+npx prisma migrate dev
+```
+
+5. Jalankan aplikasi
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Aplikasi akan berjalan di [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Struktur Project
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/                   # Next.js App Router
+│   ├── page.tsx          # Halaman utama aplikasi
+│   └── layout.tsx        # Layout utama
+├── services/
+│   └── todo-services.ts  # Logic untuk operasi CRUD
+├── utils/
+│   └── todo_prisma.ts    # Konfigurasi Prisma Client
+└── generated/            # File-file yang digenerate oleh Prisma
+    └── prisma/
 
-## Learn More
+prisma/
+├── schema.prisma        # Schema database
+└── migrations/         # File-file migrasi database
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Model Database
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```prisma
+model Todo {
+  id        String   @id @default(uuid())
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Kontribusi
 
-## Deploy on Vercel
+Silakan buat pull request untuk berkontribusi pada project ini.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Lisensi
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT License
